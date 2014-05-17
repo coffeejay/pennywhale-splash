@@ -35,7 +35,7 @@
 		this.options = $.extend({}, $.fn.typed.defaults, options);
 
 		// text content of element
-		this.text = this.el.text();
+		this.text = this.el.val();
 
 		// typing speed
 		this.typeSpeed = this.options.typeSpeed;
@@ -91,6 +91,7 @@
 				// begin the loop w/ first current string (global self.string)
 				// current string will be passed as an argument each time after this
 				var self  = this;
+				self.el.focus();
 			  	setTimeout(function() {
 			  		// Start typing
 					self.typewrite(self.string, self.strPos)
@@ -99,7 +100,7 @@
 
 			, build: function(){
 				// Insert cursor
-				this.el.after("<span id=\"typed-cursor\">|</span>");
+				// this.el.after("<span id=\"typed-cursor\">|</span>");
 				this.init();
 			}
 
@@ -141,7 +142,8 @@
 
 							// start typing each new char into existing string
 							// curString is function arg
-							self.el.text(self.text + curString.substr(0, curStrPos));
+							self.el.val(self.text + curString.substr(0, curStrPos));
+							self.el.scrollLeft($(window).width());
 
 							// check if current character number is the string's length
 							// and if the current array position is less than the stopping point
@@ -215,7 +217,7 @@
 
 					// ----- continue important stuff ----- //
 					// replace text with current text + typed characters
-					self.el.text(self.text + curString.substr(0, curStrPos));
+					self.el.val(self.text + curString.substr(0, curStrPos));
 
 					// if the number (id of character in current string) is
 					// less than the stop number, keep going
@@ -272,3 +274,11 @@
 
 
 }(window.jQuery);
+
+$(document).ready(function() {
+	// console.log('test');
+	$("#example").typed({
+	        strings: ["Calculate DCF for AAPL", "Show me the annual compound growth rate for MSFT", "Show me AMZN vs EBAY for the last 4 years", "Show me the P/E for BAC for the past five years", "What's the EBIDTA for TSLA?"],
+	        typeSpeed: 50
+	      });
+})
