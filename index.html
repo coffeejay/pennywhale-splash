@@ -16,9 +16,9 @@
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     
-    <body background="img/background.png">
+    <body background="img/header.png">
     	<div class="container">
-    		<h3>Penny<span style="color:#6ECFF5">Whale</span></h3>
+    		<h3 style="color:#ffffff">Penny<span style="color:#6ECFF5">Whale</span></h3>
     	</div>
 
     	<br/>
@@ -26,7 +26,7 @@
     	<br/>
 
     	<div class="container" align="center">
-    		<h1 style="color:#5D5C5E"> Are you ready to <span class="label label-info">supercharge</span> your financial research?</h1>
+    		<h1 style="color:#ffffff"> Are you ready to <span class="label label-info" id="changer">supercharge</span> your financial research?</h1>
     	</div>
 
     	<br/>
@@ -36,13 +36,14 @@
     	
 
     	<div class="container" align="center">
-    		<h3 style="color:#5D5C5E"> <span class="element"> </span></h3>
+    		<h3 style="color:#ffffff"> <span class="element"> </span></h3>
     	</div>
 
     	<br/>
     	<br/>
     	<br/>
     	<br/>
+
     	
 
     	<div class="container" align="center">
@@ -88,7 +89,7 @@
     <script>
 	    $(function(){
 	        $(".element").typed({
-	            strings: ["'Show me the annual compound growth rate for MSFT'", "'Show me EBAY vs AMZN for the last 5 years'", "'What's the EBIDTA for TSLA'", "'Show me the EPS for BAC for the last 4 years'", "'Show me a price chart for CUDA for 3 years'"],
+	            strings: ["'What's the annual compound growth rate for MSFT'", "'Show me EBAY vs AMZN for the last 5 years'", "'What's the EBIDTA for TSLA'", "'Show me the EPS for BAC for the last 4 years'", "'Price chart for CUDA for 3 years'"],
 	            typeSpeed: 20, // typing speed
 	            backDelay: 500, // pause before backspacing
 	            loop: true, // loop on or off (true or false)
@@ -96,6 +97,27 @@
 	            callback: function(){  } // call function after typing is done
 	        });
 	    });
+	</script>
+
+	<script>
+
+		$(document).ready(function(){
+
+			var c=0, words=['supercharge','automate','optimize','better'];
+
+
+			function loop(){
+			  $('#changer').delay(3000).fadeTo(300,0,function(){
+			     $(this).text( words[++c%words.length]).fadeTo(300,1,loop);
+			  });
+			}
+
+			loop();
+
+
+		});
+
+
 	</script>
 
 	<script>
